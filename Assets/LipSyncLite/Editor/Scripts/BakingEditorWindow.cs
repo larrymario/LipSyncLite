@@ -233,7 +233,6 @@ namespace LipSyncLite
                                 float blendValuesSum = 0.0f;
                                 for (int k = 0; k < recognizeResult.Length; ++k)
                                 {
-                                    Debug.Log(k + " " + recognizeResult[k]);
                                     for (int kk = 0; kk < currentVowels.Length; ++kk)
                                     {
                                         targetBlendValues[kk] = 0;
@@ -245,7 +244,7 @@ namespace LipSyncLite
                                     blendValuesSum = 0.0f;
                                     for (int kkk = 0; kkk < currentVowels.Length; ++kkk)
                                     {
-                                        blendValuesSum += currentBlendValues[j];
+                                        blendValuesSum += currentBlendValues[kkk];
                                     }
 
                                     for (int kkkk = 0; kkkk < currentVowels.Length; ++kkkk)
@@ -259,6 +258,13 @@ namespace LipSyncLite
                                             
                                     }
                                     
+                                }
+
+                                for (int jjj = 0; jjj < currentVowels.Length; ++jjj)
+                                {
+                                    Keyframe keyframe = new Keyframe(timeUnit * recognizeResult.Length, 0);
+                                    curveArray[jjj].AddKey(keyframe);
+
                                 }
 
                                 for (int l = 0; l < currentVowels.Length; ++l)
